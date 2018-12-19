@@ -32,20 +32,20 @@ insert into manComic set cChsName='我的第一本漫画',cJapName='私の初め
 
 
 #漫画章节
-drop table manEpisode;
-create table IF NOT EXISTS manEpisode (eUid int not null primary key auto_increment
+drop table manChapter;
+create table IF NOT EXISTS manEpisode (chUid int not null primary key auto_increment
 ,cUid int NOT NULL                                          #所属漫画uid
-,eNo varchar(10)                                            #第几集
-,eTitle varchar(50)                                         #标题
-,eAmount int NOT NULL default 0                             #所包含张数
-,eClickCnt int NOT NULL default 0                           #此集点击率
-,eVipTF enum('T','F') NOT NULL default 'F'                  #是否VIP读物
-,ePrice int NOT NULL default 0                              #扣除费用
-,eIsViewTF enum('T','F') default 'T'                        #是否显示章节
-,eCreateDate datetime NOT NULL default now()                #创建日期
+,chNo varchar(10)                                            #第几集
+,chTitle varchar(50)                                         #标题
+,chAmount int NOT NULL default 0                             #所包含张数
+,chClickCnt int NOT NULL default 0                           #此集点击率
+,chVipTF enum('T','F') NOT NULL default 'F'                  #是否VIP读物
+,chPrice int NOT NULL default 0                              #扣除费用
+,chIsViewTF enum('T','F') default 'T'                        #是否显示章节
+,chCreateDate datetime NOT NULL default now()                #创建日期
 )auto_increment=1;
 
-insert into manEpisode set cUid=1,eNo='1',eTitle='1st Episode',eAmount=1;
+insert into manChapter set cUid=1,chNo='1',chTitle='1st Episode',chAmount=1;
 
 #漫画页面
 drop table manPage;
