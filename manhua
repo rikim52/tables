@@ -1,0 +1,130 @@
+CREATE DATABASE IF NOT EXISTS manhua default charset utf8 COLLATE utf8_general_ci; 
+
+#漫画表
+drop table manComic;
+create table IF NOT EXISTS manComic ( cUid int not null primary key auto_increment
+,cChsName varchar(50)                                          #中文漫画名
+,cJapName varchar(50)                                          #日本名
+,cKorName varchar(50)                                          #韩国名
+,cEngName varchar(50)                                          #英文名
+,cAuthor varchar(30)                                           #作者
+,cText text                                                    #漫画介绍
+,cMark varchar(10)                                             #漫画评分
+,cClass varchar(80)                                            #漫画分类
+,cUserGroup varchar(30)                                        #倾向群众
+,cRegion varchar(30)                                           #漫画地区
+,cPicLink1 varchar(200)                                        #漫画图片1
+,cPicLink2 varchar(200)                                        #漫画图片2
+,lastEpisodeUid int                                            #最后更新的集
+,cClickCnt bigint NOT NULL default 0                           #点击率
+,cTag varchar(300)                                             #Tag
+,cStatus enum('0','1','2','3') NOT NULL default '0'            #是否完结，0-未上架，1-连载，2-完结，3-已下架
+,cListCount1 bigint NOT NULL default 0                         #正本连载包含集数
+,cListCount2 bigint NOT NULL default 0                         #番外篇连载包含集数
+,cVipTF enum('T','F') default 'F'                              #是否VIP读物
+,cAudltTF enum('T','F') NOT NULL default 'F'                   #是否成人向
+,cUpUser varchar(300)                                          #上传者数组
+,cIsViewTF enum('T','F') NOT NULL default 'F'                  #是否显示漫画
+,cCreateDate datetime NOT NULL default now()                   #漫画创建日期
+)auto_increment=1;
+
+insert into manComic set cChsName='我的第一本漫画',cJapName='私の初めての漫画',cKorName='나의 첫번째 만화',cEngName='My First cartoon is here, yes ryzen',cAuthor='Rokey',cText='yes, it is!',cMark='10',cClass='1|2|3',cUserGroup='1',cRegion='China',cPicLink1='http://mhfm5cnc.cdndm5.com/1/432/20181130190959_360x480_102.jpg',cPicLink2='http://mhfm2cnc.cdndm5.com/1/432/20180913185949_480x369_95.jpg',lastEpisodeUid=0,cUpUser='Rokey';
+
+
+#漫画章节
+drop table manEpisode;
+create table IF NOT EXISTS manEpisode (eUid int not null primary key auto_increment
+,cUid int NOT NULL                                          #所属漫画uid
+,eNo varchar(10)                                            #第几集
+,eTitle varchar(50)                                         #标题
+,eAmount int NOT NULL default 0                             #所包含张数
+,eClickCnt int NOT NULL default 0                           #此集点击率
+,eVipTF enum('T','F') NOT NULL default 'F'                  #是否VIP读物
+,ePrice int NOT NULL default 0                              #扣除费用
+,eIsViewTF enum('T','F') default 'T'                        #是否显示章节
+,eCreateDate datetime NOT NULL default now()                #创建日期
+)auto_increment=1;
+
+insert into manEpisode set cUid=1,eNo='1',eTitle='1st Episode',eAmount=1;
+
+#漫画页面
+drop table manPage;
+create table IF NOT EXISTS manPage (pUid int not null primary key auto_increment
+,pUrl varchar(300)                                       #图片地址
+,pNo int NOT NULL                                        #图片页码
+,eUid int NOT NULL                                       #所属章节uid
+,pSort int NOT NULL DEFAULT 0                            #排序依据
+,pCnt bigint NOT NULL DEFAULT 0                          #所图片点击率
+)auto_increment=1;
+
+insert into manPage set pUrl='http://manhua1032-101-69-161-98.cdndm5.com/1/432/732145/1_8612.png?cid=732145&key=9df5b3b95a7ffb036ce1aeb5d0fe389d',eUid=1,pNo=1;
+insert into manPage set pUrl='http://mhfm2cnc.cdndm5.com/1/432/20180913185949_480x369_95.jpg',eUid=1,pNo=1;
+
+
+#漫画分类
+create table IF NOT EXISTS manClass(csUid int not null primary key auto_increment
+,csChsName varchar(20)                                  #中文分类名
+,csKorName varchar(20)                                  #韩文分类名
+,csJapName varchar(20)                                  #日文分类名
+,csEngName varchar(20)                                  #英文分类名
+,csSort int default 0                                   #排序依据
+)auto_increment=1;
+
+insert into manClass set csChsName='热血';
+insert into manClass set csChsName='恋爱';
+insert into manClass set csChsName='校园';
+insert into manClass set csChsName='百合';
+insert into manClass set csChsName='耽美';
+insert into manClass set csChsName='冒险';
+insert into manClass set csChsName='后宫';
+insert into manClass set csChsName='科幻';
+insert into manClass set csChsName='战争';
+insert into manClass set csChsName='悬疑';
+insert into manClass set csChsName='推理';
+insert into manClass set csChsName='搞笑';
+insert into manClass set csChsName='奇幻';
+insert into manClass set csChsName='魔法';
+insert into manClass set csChsName='恐怖';
+insert into manClass set csChsName='神鬼';
+insert into manClass set csChsName='历史';
+insert into manClass set csChsName='同人';
+insert into manClass set csChsName='运动';
+insert into manClass set csChsName='绅士';
+insert into manClass set csChsName='机甲';
+insert into manClass set csChsName='其他';
+
+
+#用户表
+drop table manUser;
+create table IF NOT EXISTS manUser(uUid int not null primary key auto_increment
+,uId varchar(30)                                                #账户
+,uPwd text                                                            #密码
+,uName varchar(20)                                                #姓名
+,uPic text                                                             #图片
+,uSex enum('M','F','N') NOT NULL DEFAULT 'N'            #性别
+,uText text                                                            #自我介绍
+,uRegin varchar(50)                                                #地区
+,uProfession varchar(100)                                    #职业
+,uUseTF enum('T','F') default 'T'                        #是否可用用户
+,uVipTF enum('T','F') default 'F'                        #是否VIP用户
+,uCreateDate datetime default now()
+)auto_increment=1;
+
+insert into manUser set uId='evrose',uPwd='dnls99',uName='Rokey',uSex='M',uRegin='China',uProfession='Farmer';
+
+#漫画吐槽
+drop table manComment;
+create table IF NOT EXISTS manComment(cmUid int not null primary key auto_increment
+,cmText text                                 #吐槽内容
+,uUid int                                    #吐槽用户
+,cmCreateDate datetime default now()         #创建日期
+,cmIp varchar(20)                            #用户IP
+,joinCmUid int                               #上一级吐槽内容
+)auto_increment=1;
+
+
+insert into manComment set cmText='hello world',uUid=1,cmIp='127.0.0.1';
+
+
+
+
