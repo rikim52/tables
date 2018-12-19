@@ -7,6 +7,7 @@ create table IF NOT EXISTS manComic ( cUid int not null primary key auto_increme
 ,cJapName varchar(50)                                          #日本名
 ,cKorName varchar(50)                                          #韩国名
 ,cEngName varchar(50)                                          #英文名
+,cUrlName varchar(50)                                          #DM5UrlName
 ,cAuthor varchar(30)                                           #作者
 ,cText text                                                    #漫画介绍
 ,cMark varchar(10)                                             #漫画评分
@@ -36,6 +37,7 @@ drop table manChapter;
 create table IF NOT EXISTS manEpisode (chUid int not null primary key auto_increment
 ,cUid int NOT NULL                                          #所属漫画uid
 ,chNo varchar(10)                                            #第几集
+,chUrlName varchar(50)                                       #DM5UrlName
 ,chTitle varchar(50)                                         #标题
 ,chAmount int NOT NULL default 0                             #所包含张数
 ,chClickCnt int NOT NULL default 0                           #此集点击率
@@ -52,6 +54,7 @@ drop table manPage;
 create table IF NOT EXISTS manPage (pUid int not null primary key auto_increment
 ,pUrl varchar(300)                                       #图片地址
 ,pNo int NOT NULL                                        #图片页码
+,pUrlName varchar(50)                                    #DM5UrlName
 ,eUid int NOT NULL                                       #所属章节uid
 ,pSort int NOT NULL DEFAULT 0                            #排序依据
 ,pCnt bigint NOT NULL DEFAULT 0                          #所图片点击率
