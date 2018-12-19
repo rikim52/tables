@@ -34,7 +34,7 @@ insert into manComic set cChsName='我的第一本漫画',cJapName='私の初め
 
 #漫画章节
 drop table manChapter;
-create table IF NOT EXISTS manEpisode (chUid int not null primary key auto_increment
+create table IF NOT EXISTS manChapter (chUid int not null primary key auto_increment
 ,cUid int NOT NULL                                          #所属漫画uid
 ,chNo varchar(10)                                            #第几集
 ,chUrlName varchar(50)                                       #DM5UrlName
