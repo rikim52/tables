@@ -28,7 +28,7 @@ create table IF NOT EXISTS manComic ( cUid int not null primary key auto_increme
 ,cCreateDate datetime NOT NULL default now()                   #漫画创建日期
 )auto_increment=1;
 
-insert into manComic set cChsName='我的第一本漫画',cJapName='私の初めての漫画',cKorName='나의 첫번째 만화',cEngName='My First cartoon is here, yes ryzen',cAuthor='Rokey',cText='yes, it is!',cMark='10',cClass='1|2|3',cUserGroup='1',cRegion='China',cPicLink1='http://mhfm5cnc.cdndm5.com/1/432/20181130190959_360x480_102.jpg',cPicLink2='http://mhfm2cnc.cdndm5.com/1/432/20180913185949_480x369_95.jpg',lastEpisodeUid=0,cUpUser='Rokey';
+insert into manComic set cChsName='我的第一本漫画',cJapName='私の初めての漫画',cKorName='나의 첫번째 만화',cEngName='My First cartoon is here, yes ryzen',cAuthor='Rokey',cText='yes, it is!',cMark='10',cClass='1|2|3',cUserGroup='1',cRegion='China',cPicCoverLink1='http://mhfm5cnc.cdndm5.com/1/432/20181130190959_360x480_102.jpg',cPicCoverLink2='http://mhfm2cnc.cdndm5.com/1/432/20180913185949_480x369_95.jpg',lastEpisodeUid=0,cUpUser='Rokey';
 
 
 #漫画章节
