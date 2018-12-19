@@ -97,16 +97,16 @@ insert into manClass set csChsName='其他';
 #用户表
 drop table manUser;
 create table IF NOT EXISTS manUser(uUid int not null primary key auto_increment
-,uId varchar(30)                                                #账户
+,uId varchar(30)                                                      #账户
 ,uPwd text                                                            #密码
-,uName varchar(20)                                                #姓名
-,uPic text                                                             #图片
-,uSex enum('M','F','N') NOT NULL DEFAULT 'N'            #性别
-,uText text                                                            #自我介绍
-,uRegin varchar(50)                                                #地区
-,uProfession varchar(100)                                    #职业
-,uUseTF enum('T','F') default 'T'                        #是否可用用户
-,uVipTF enum('T','F') default 'F'                        #是否VIP用户
+,uName varchar(20)                                                    #姓名
+,uPic text                                                            #图片
+,uSex enum('M','F','N') NOT NULL DEFAULT 'N'                          #性别
+,uText text                                                           #自我介绍
+,uRegin varchar(50)                                                   #地区
+,uProfession varchar(100)                                             #职业
+,uUseTF enum('T','F') default 'T'                                     #是否可用用户
+,uVipTF enum('T','F') default 'F'                                     #是否VIP用户
 ,uCreateDate datetime default now()
 )auto_increment=1;
 
