@@ -14,9 +14,9 @@ create table IF NOT EXISTS manComic ( cUid int not null primary key auto_increme
 ,cClass varchar(80)                                            #漫画分类
 ,cUserGroup varchar(30)                                        #倾向群众
 ,cRegion varchar(30)                                           #漫画地区
-,cPicCoverLink1 varchar(200)                                        #漫画图片1
-,cPicCoverLink2 varchar(200)                                        #漫画图片2
-,lastEpisodeUid int                                            #最后更新的集
+,cPicCoverLink1 varchar(200)                                   #漫画图片1
+,cPicCoverLink2 varchar(200)                                   #漫画图片2
+,lastChapterUrlName int                                        #最后更新的集
 ,cClickCnt bigint NOT NULL default 0                           #点击率
 ,cTag varchar(300)                                             #Tag
 ,cStatus enum('0','1','2','3') NOT NULL default '0'            #是否完结，0-未上架，1-连载，2-完结，3-已下架
@@ -45,6 +45,7 @@ create table IF NOT EXISTS manChapter (chUid int not null primary key auto_incre
 ,chPrice int NOT NULL default 0                              #扣除费用
 ,chIsViewTF enum('T','F') default 'T'                        #是否显示章节
 ,chMemo varchar(50)                                          #비고
+,chSelectUid enum("0","1","2","3","4")                       #是否外传 1-连载 3-外传
 ,chCreateDate datetime NOT NULL default now()                #创建日期
 )auto_increment=1;
 
