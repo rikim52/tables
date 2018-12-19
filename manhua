@@ -13,8 +13,8 @@ create table IF NOT EXISTS manComic ( cUid int not null primary key auto_increme
 ,cClass varchar(80)                                            #漫画分类
 ,cUserGroup varchar(30)                                        #倾向群众
 ,cRegion varchar(30)                                           #漫画地区
-,cPicLink1 varchar(200)                                        #漫画图片1
-,cPicLink2 varchar(200)                                        #漫画图片2
+,cPicCoverLink1 varchar(200)                                        #漫画图片1
+,cPicCoverLink2 varchar(200)                                        #漫画图片2
 ,lastEpisodeUid int                                            #最后更新的集
 ,cClickCnt bigint NOT NULL default 0                           #点击率
 ,cTag varchar(300)                                             #Tag
