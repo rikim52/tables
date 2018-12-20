@@ -57,7 +57,7 @@ create table IF NOT EXISTS manPage (pUid int not null primary key auto_increment
 ,pUrl varchar(300)                                       #图片地址
 ,pNo int NOT NULL                                        #图片页码
 ,pUrlName varchar(50)                                    #DM5UrlName
-,eUid int NOT NULL                                       #所属章节uid
+,chUid int NOT NULL                                      #所属章节uid
 ,pSort int NOT NULL DEFAULT 0                            #排序依据
 ,pCnt bigint NOT NULL DEFAULT 0                          #所图片点击率
 )auto_increment=1;
