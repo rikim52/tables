@@ -44,7 +44,7 @@ create table IF NOT EXISTS manChapter (chUid int not null primary key auto_incre
 ,chVipTF enum('T','F') NOT NULL default 'F'                  #是否VIP读物
 ,chPrice int NOT NULL default 0                              #扣除费用
 ,chIsViewTF enum('T','F') default 'T'                        #是否显示章节
-,chMemo varchar(50)                                          #비고
+,chMemo text                                                 #비고
 ,chSelectUid enum("0","1","2","3","4")                       #是否外传 1-连载 3-外传
 ,chCreateDate datetime NOT NULL default now()                #创建日期
 )auto_increment=1;
