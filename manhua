@@ -127,6 +127,13 @@ create table IF NOT EXISTS manComment(cmUid int not null primary key auto_increm
 ,joinCmUid int                               #上一级吐槽内容
 )auto_increment=1;
 
+drop table manPageError;
+create table IF NOT EXISTS manPageError(peUid int not null primary key auto_increment
+,peUrl varchar(300)
+,peMsg text
+,peReferer varchar(100)
+,peCreateDate datetime default now()
+)auto_increment=1;
 
 insert into manComment set cmText='hello world',uUid=1,cmIp='127.0.0.1';
 
